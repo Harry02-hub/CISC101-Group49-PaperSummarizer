@@ -39,3 +39,8 @@ module Module3_Guardrails:
     - Never add facts beyond source
     - Keep section order intact
 
+if evidence_mode == "strict"
+    remove false or not supporting claims 
+    else:
+      output is standard message 
+
