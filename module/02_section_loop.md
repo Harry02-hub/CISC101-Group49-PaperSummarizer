@@ -24,7 +24,8 @@ module Module2_SectionLoops:
     - No invented data, numbers, or claims
     - <= 100 words per section
 
-if summary_level == "short"
-    only produce 1-3 sentences
-if summary_level == "detail"
-    create longer summery and add 1-2 bullet points
+if summary_level == "short": 
+    produce 1–2 sentence summary
+if summary_level == "detailed":
+    produce paragraph and 3–5 bullets
+
