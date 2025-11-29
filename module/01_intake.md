@@ -1,18 +1,32 @@
-Purpose
-Prepare inputs, validate completeness, set summarization parameters, and enforce global constraints.
-Responsibilities
-Section list: Detect and register sections: Introduction, Methods, Results, Discussion.
-Constraint application: Set per-section limit (≤100 words) and total limit (≤400 words).
-Audience setting: Store audience (“general public” or “expert”) and tone parameters.
-Normalization: Trim whitespace, remove headings duplication, and standardize section keys.
-Pre-checks: Flag missing/empty sections; pass to Guardrails.
-Inputs
-Paper sections: Raw text for each section.
-Audience: “general public” or “expert.”
-Outputs
-Config object: Section registry, limits, audience tone settings.
-Validation report: Missing/empty sections, anomalies.
-Key rules
-No new sections: Only the four canonical sections.
-Order enforced: Introduction → Methods → Results → Discussion.
+module Module1_IntakeAndSetup:
+  purpose: Prepare inputs, validate completeness, set limits, and tone
+  inputs:
+    - paper_sections: {Introduction, Methods, Results, Discussion}
+    - audience: "general public" | "expert"
+  state:
+    - section_order = ["Introduction","Methods","Results","Discussion"]
+    - per_section_limit = 100  // words
+    - total_limit = 400        // words
+    - tone = audience
+  functions:
+    init(config):
+      set per_section_limit = 100
+      set total_limit = 400
+      set tone = config.audience
+      normalize section keys to canonical names
+      trim whitespace, remove duplicate headings
+      validate presence/emptiness of each section
+      produce validation_report
 
+    get_config():
+      return {
+        section_order,
+        per_section_limit,
+        total_limit,
+        tone,
+        validation_report
+      }
+
+  rules:
+    - Only accept the four canonical sections
+    - Keep the output order: Introduction → Methods → Results → Discussion
