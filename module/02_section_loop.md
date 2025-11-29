@@ -1,3 +1,5 @@
+- change log: added summary_level 
+
 module Module2_SectionLoops:
   purpose: Summarize each section independently with tone and word limits
   inputs:
