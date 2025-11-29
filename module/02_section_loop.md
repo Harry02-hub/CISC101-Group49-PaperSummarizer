@@ -1,3 +1,5 @@
+- change log: added summary_level 
+
 module Module2_SectionLoops:
   purpose: Summarize each section independently with tone and word limits
   inputs:
@@ -23,4 +25,9 @@ module Module2_SectionLoops:
     - No cross-section borrowing
     - No invented data, numbers, or claims
     - <= 100 words per section
+
+if summary_level == "short": 
+    produce 1–2 sentence summary
+if summary_level == "detailed":
+    produce paragraph and 3–5 bullets
 

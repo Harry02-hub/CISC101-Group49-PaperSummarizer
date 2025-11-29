@@ -1,3 +1,5 @@
+- change log: added evidence_mode with strict behavior and standerdized warnings
+
 module Module3_Guardrails:
   purpose: Prevent hallucinations, handle missing/empty sections, enforce limits
   inputs:
@@ -38,4 +40,9 @@ module Module3_Guardrails:
   rules:
     - Never add facts beyond source
     - Keep section order intact
+
+if evidence_mode == "strict":
+    remove unsupported claims
+    if nothing remains:
+        output standardized message
 
